@@ -1,0 +1,94 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f6f8;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.container {
+    max-width: 850px;
+    width: 100%;
+}
+
+h1 {
+    font-weight: 600;
+    color: #1e3a8a; /* deep blue */
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+.card {
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem; /* spacing between sections */
+    border: 1px solid #dbe0e6;
+    background-color: #ffffff;
+}
+
+.card-header {
+    background-color: #1e40af; /* blue */
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 1rem 1.25rem;
+    border-top-left-radius: 0.75rem;
+    border-top-right-radius: 0.75rem;
+}
+
+textarea, input[type="text"] {
+    font-family: 'Courier New', monospace;
+    resize: vertical;
+    border: 1px solid #ced4da;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background-color: #f9fafb;
+    color: #374151;
+}
+
+button.btn {
+    border-radius: 0.5rem;
+    padding: 0.5rem 1.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    border: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-success {
+    background-color: #2563eb; /* blue */
+    color: white;
+}
+
+.btn-primary {
+    background-color: #3b82f6; /* lighter blue */
+    color: white;
+}
+
+.btn-warning {
+    background-color: #60a5fa; /* even lighter blue */
+    color: white;
+}
+
+/* Button hover effect */
+button.btn:hover {
+    background-color: #1d4ed8; /* darker blue on hover */
+    transform: scale(1.02);
+    opacity: 0.95;
+}
+
+/* Alert messages */
+.alert {
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+}
+
+/* Footer */
+footer {
+    font-size: 0.9rem;
+    color: #6b7280;
+    text-align: center;
+    margin-top: 3rem;
+}
