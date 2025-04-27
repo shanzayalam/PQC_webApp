@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post-Quantum Cryptography App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <h1 class="text-center mb-4">🔐 Post-Quantum Cryptography Web App</h1>
+        
+        <!-- Key Generation Section -->
+        <div class="card shadow mb-4">
+            <div class="card-header">1. Generate Keys</div>
+            <div class="card-body">
+                <form method="post" action="/">
+                    <button type="submit" name="generate" class="btn btn-success">Generate Public/Private Keys</button>
+                </form>
+                {% if keys.public_key %}
+                <div class="mt-3">
+                    <strong>Public Key:</strong>
+                    <textarea class="form-control" rows="4" readonly>{{ keys.public_key }}</textarea>
+                    <strong class="mt-2 d-block">Private Key:</strong>
+                    <textarea class="form-control" rows="4" readonly>{{ keys.private_key }}</textarea>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Encryption Section -->
+        <div class="card shadow mb-4">
+            <div class="card-header">2. Encrypt Message</div>
+            <div class="card-body">
+                <form method="post" action="/">
+                    <div class="mb-3">
+                        <label>Message to Encrypt:</label>
+                        <input type="text" class="form-control" name="message" required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Public Key:</label>
+                        <textarea class="form-control" name="pub_key" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" name="encrypt" class="btn btn-primary">Encrypt</button>
+                </form>
+
+                {% if result.encrypted %}
+                <div class="mt-4">
+                    <strong>Encrypted Ciphertext:</strong>
+                    <textarea class="form-control" rows="3" readonly>{{ result.encrypted }}</textarea>
+                </div>
+                {% elif result.error %}
+                <div class="alert alert-danger mt-3">{{ result.error }}</div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Decryption Section -->
+        <div class="card shadow mb-4">
+            <div class="card-header">3. Decrypt Ciphertext</div>
+            <div class="card-body">
+                <form method="post" action="/">
+                    <div class="mb-3">
+                        <label>Encrypted Ciphertext:</label>
+                        <textarea class="form-control" name="ciphertext" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label>Private Key:</label>
+                        <textarea class="form-control" name="priv_key" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" name="decrypt" class="btn btn-warning">Decrypt</button>
+                </form>
+
+                {% if result.decrypted %}
+                <div class="mt-4">
+                    <strong>Decrypted Message:</strong>
+                    <textarea class="form-control" rows="2" readonly>{{ result.decrypted }}</textarea>
+                </div>
+                {% elif result.error %}
+                <div class="alert alert-danger mt-3">{{ result.error }}</div>
+                {% endif %}
+            </div>
+        </div>
+
+        <footer class="text-center text-muted mt-5">© 2025 PQC Demo | Kyber512 Implementation</footer>
+    </div>
+</body>
+</html>
